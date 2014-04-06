@@ -14,7 +14,7 @@
    </launcherArgs>
 
    <splash
-      location="com.example.e4.rcp.todo" />
+      location="com.amitinside.e4.rcp.todo" />
    <launcher name="todo">
       <solaris/>
       <win useIco="false">

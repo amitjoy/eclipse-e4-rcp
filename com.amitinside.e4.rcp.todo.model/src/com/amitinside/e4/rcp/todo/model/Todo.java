@@ -22,7 +22,7 @@ public class Todo {
 
 	public Todo() {
 	}
-	
+
 	public Todo(long i) {
 		id = i;
 	}
@@ -35,12 +35,10 @@ public class Todo {
 		this.dueDate = date;
 	}
 
-	
-
 	public long getId() {
 		return id;
 	}
-	
+
 	public String getSummary() {
 		return summary;
 	}

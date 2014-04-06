@@ -16,23 +16,23 @@
           -->
          <property
                name="lifeCycleURI"
-               value="bundleclass://com.example.e4.rcp.todo/com.example.e4.rcp.todo.lifecycle.Manager">
+               value="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.lifecycle.Manager">
          </property>
           <!-- comments out of testing purposes
          <property
                name="applicationCSS"
-               value="platform:/plugin/com.example.e4.rcp.todo/css/rainbow.css">
+               value="platform:/plugin/com.amitinside.e4.rcp.todo/css/rainbow.css">
          </property>
          
          <property
                name="rendererFactoryUri"
-               value="bundleclass://com.example.e4.renderer.swt/com.example.e4.renderer.swt.MyRendererFactory">
+               value="bundleclass://com.amitinside.e4.renderer.swt/com.example.e4.renderer.swt.MyRendererFactory">
          </property>
          -->
          <!-- commented to simplify SWTBot test example
          <property
                name="lifeCycleURI"
-               value="bundleclass://com.example.e4.rcp.todo/com.example.e4.rcp.todo.lifecycle.LifeCycleManager">
+               value="bundleclass://com.amitinside.e4.rcp.todo/com.example.e4.rcp.todo.lifecycle.LifeCycleManager">
          </property>
          -->
       </product>
@@ -41,12 +41,12 @@
          point="org.eclipse.e4.ui.css.swt.theme">
       <theme
             basestylesheeturi="css/default.css"
-            id="com.example.e4.rcp.todo.default"
+            id="com.amitinside.e4.rcp.todo.default"
             label="Default Theme">
       </theme>
       <theme
             basestylesheeturi="css/rainbow.css"
-            id="com.example.e4.rcp.todo.rainbow"
+            id="com.amitinside.e4.rcp.todo.rainbow"
             label="Rainbow">
       </theme>
    </extension>

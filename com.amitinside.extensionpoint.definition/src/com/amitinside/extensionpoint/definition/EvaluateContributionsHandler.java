@@ -9,7 +9,7 @@ import org.eclipse.e4.core.di.annotations.Execute;
 
 public class EvaluateContributionsHandler {
 	private static final String IGREETER_ID = 
-			"com.vogella.extensionpoint.definition.greeter";
+			"com.amitinside.extensionpoint.definition.greeter";
 	@Execute
 	public void execute(IExtensionRegistry registry) {
 		evaluate(registry);

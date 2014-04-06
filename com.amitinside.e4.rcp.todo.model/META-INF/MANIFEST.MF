@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Model
 Bundle-SymbolicName: com.amitinside.e4.rcp.todo.model
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: EXAMPLE
+Bundle-Vendor: AMIT KUMAR MONDAL
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: com.amitinside.e4.rcp.todo.model
 Require-Bundle: org.eclipse.equinox.event;bundle-version="1.2.200",

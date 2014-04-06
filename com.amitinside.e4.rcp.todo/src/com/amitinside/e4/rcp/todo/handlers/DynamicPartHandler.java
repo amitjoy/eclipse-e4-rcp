@@ -10,12 +10,13 @@ import org.eclipse.e4.ui.workbench.modeling.EPartService.PartState;
 public class DynamicPartHandler {
 	// Used as reference
 	@Execute
-	public void execute(MApplication application, EPartService partService, EModelService modelService  ) {
-		// 
+	public void execute(MApplication application, EPartService partService,
+			EModelService modelService) {
+		//
 		modelService.find("", application);
 		// Create Part based on PartDescriptor
-		MPart part = 
-				partService.createPart("com.example.e4.rcp.todo.partdescriptor.dynamic");
+		MPart part = partService
+				.createPart("com.amitinside.e4.rcp.todo.partdescriptor.dynamic");
 		partService.showPart(part, PartState.ACTIVATE);
 	}
 }

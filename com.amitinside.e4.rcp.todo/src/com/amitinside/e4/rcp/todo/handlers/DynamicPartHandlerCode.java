@@ -17,8 +17,8 @@ public class DynamicPartHandlerCode {
 		MPart mPart = modelService.createModelElement(MPart.class);
 		mPart.setLabel("Testing");
 		mPart.setElementId("newid");
-		mPart.setContributionURI("bundleclass://com.example.e4.rcp.todo/"
-				+ "com.example.e4.rcp.todo.ui.parts.DynamicPart");
+		mPart.setContributionURI("bundleclass://com.amitinside.e4.rcp.todo/"
+				+ "com.amitinside.e4.rcp.todo.ui.parts.DynamicPart");
 		partService.showPart(mPart, PartState.ACTIVATE);
 	}
 }

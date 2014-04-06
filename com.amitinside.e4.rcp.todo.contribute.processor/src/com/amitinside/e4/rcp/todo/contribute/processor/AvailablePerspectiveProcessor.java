@@ -11,7 +11,6 @@ public class AvailablePerspectiveProcessor {
 	@Execute
 	public void execute(MApplication app) {
 		List<MWindow> list = app.getChildren();
-		
 
 	}
 }

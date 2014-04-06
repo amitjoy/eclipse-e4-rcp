@@ -1,10 +1,8 @@
 package com.amitinside.e4.rcp.todo.parts;
 
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -42,7 +40,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
-
 import com.amitinside.e4.rcp.todo.events.MyEventConstants;
 import com.amitinside.e4.rcp.todo.model.ITodoService;
 import com.amitinside.e4.rcp.todo.model.Todo;
@@ -59,7 +56,7 @@ public class TodoOverviewPart {
 
 	@Inject
 	ESelectionService service;
-	
+
 	@Inject
 	IEventBroker broker;
 
@@ -159,7 +156,8 @@ public class TodoOverviewPart {
 				return true;
 			}
 		});
-		TableViewerColumn colDescription= new TableViewerColumn(viewer, SWT.NONE);
+		TableViewerColumn colDescription = new TableViewerColumn(viewer,
+				SWT.NONE);
 
 		colDescription.getColumn().setWidth(100);
 		colDescription.getColumn().setText("Description");
@@ -184,7 +182,7 @@ public class TodoOverviewPart {
 			}
 		});
 		menuService.registerContextMenu(viewer.getControl(),
-				"com.example.e4.rcp.todo.popupmenu.table");
+				"com.amitinside.e4.rcp.todo.popupmenu.table");
 		writableList = new WritableList(model.getTodos(), Todo.class);
 		ViewerSupport.bind(
 				viewer,
@@ -194,7 +192,6 @@ public class TodoOverviewPart {
 
 	}
 
-	
 	@Inject
 	@Optional
 	private void getNotified(

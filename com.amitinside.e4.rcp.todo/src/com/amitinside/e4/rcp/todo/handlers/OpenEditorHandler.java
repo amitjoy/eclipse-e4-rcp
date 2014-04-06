@@ -20,8 +20,7 @@ public class OpenEditorHandler {
 	@Execute
 	public void execute(
 			@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Todo todo,
-			MApplication application, 
-			EModelService modelService,
+			MApplication application, EModelService modelService,
 			EPartService partService) {
 
 		// sanity check
@@ -42,14 +41,14 @@ public class OpenEditorHandler {
 				return;
 			}
 		}
-		
+
 		// editor was not open, create it and show it
 
 		// create an Input part
 		MPart part = modelService.createModelElement(MPart.class);
 
 		// Pointing to the contributing class
-		part.setContributionURI("bundleclass://com.example.e4.rcp.todo/com.example.e4.rcp.todo.parts.EditorPart");
+		part.setContributionURI("bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.EditorPart");
 		part.getPersistedState().put(Todo.FIELD_ID, id);
 
 		// create a nice label for the part header
@@ -60,7 +59,7 @@ public class OpenEditorHandler {
 
 		// add it an existing stack
 		MPartStack stack = (MPartStack) modelService.find(
-				"com.example.e4.rcp.todo.partstack.bottom", application);
+				"com.amitinside.e4.rcp.todo.partstack.bottom", application);
 		stack.getChildren().add(part);
 		partService.showPart(part, PartState.ACTIVATE);
 

@@ -51,7 +51,8 @@ public class EditorPart {
 	private Todo todo;
 
 	@PostConstruct
-	public void createControls(Composite parent, MPart part, ITodoService todoService) {
+	public void createControls(Composite parent, MPart part,
+			ITodoService todoService) {
 		// extract the id of the todo item
 		String string = part.getPersistedState().get(Todo.FIELD_ID);
 		Long idOfTodo = Long.valueOf(string);

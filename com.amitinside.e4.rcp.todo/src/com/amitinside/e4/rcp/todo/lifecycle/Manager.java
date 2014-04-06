@@ -21,7 +21,7 @@ public class Manager {
 	// We add the nodePath in case you move the lifecycle handler to
 	// another plug-in later
 	@Inject
-	@Preference(nodePath = "com.example.e4.rcp.todo", value = "user")
+	@Preference(nodePath = "com.amitinside.e4.rcp.todo", value = "user")
 	private String user;
 
 	@PostContextCreate
@@ -38,8 +38,8 @@ public class Manager {
 		appContext.applicationRunning();
 
 		// position the shell
-		 setLocation(display, shell);
-		
+		setLocation(display, shell);
+
 		// open the dialog
 		if (dialog.open() != Window.OK) {
 			// close the application
@@ -53,7 +53,7 @@ public class Manager {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 	private void setLocation(Display display, Shell shell) {

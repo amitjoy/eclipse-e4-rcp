@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="com.vogella.extensionpoint.definition.greeter">
+         point="com.amitinside.extensionpoint.definition.greeter">
       <client
             class="com.amitinside.extensionpoint.contribution.GreeterGerman"></client>
    </extension>

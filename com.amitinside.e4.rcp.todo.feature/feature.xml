@@ -39,13 +39,6 @@
          unpack="false"/>
 
    <plugin
-         id="com.amitinside.e4.bundleresourceloader"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.amitinside.e4.rcp.todo.ownannotation"
          download-size="0"
          install-size="0"
@@ -88,6 +81,13 @@
          unpack="false"/>
 
    <plugin
+         id="com.amitinside.e4.rcp.todo.contribute.processor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="com.amitinside.extensionpoint.contribution"
          download-size="0"
          install-size="0"
@@ -96,6 +96,13 @@
 
    <plugin
          id="com.amitinside.extensionpoint.definition"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.amitinside.e4.bundleresourceloader"
          download-size="0"
          install-size="0"
          version="0.0.0"

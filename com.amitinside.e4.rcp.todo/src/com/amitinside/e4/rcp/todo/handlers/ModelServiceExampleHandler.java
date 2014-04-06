@@ -34,8 +34,7 @@ public class ModelServiceExampleHandler {
 	}
 
 	// example for search by type
-	private void findParts(MApplication application,
-			EModelService service) {
+	private void findParts(MApplication application, EModelService service) {
 		List<MPart> parts = service.findElements(application, null,
 				MPart.class, null);
 		System.out.println("Found parts(s) : " + parts.size());
