@@ -1,4 +1,3 @@
-
 package com.amitinside.e4.todo.contribute.handler;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
@@ -9,13 +8,11 @@ import org.eclipse.jface.window.Window;
 
 import com.amitinside.e4.todo.contribute.dialogs.ExitDialog;
 
-
-
 public class ExitHandlerWithCheck {
 	@Execute
 	public void execute(IEclipseContext context, IWorkbench workbench) {
-		ExitDialog dialog = ContextInjectionFactory.
-				make(ExitDialog.class, context);
+		ExitDialog dialog = ContextInjectionFactory.make(ExitDialog.class,
+				context);
 		dialog.create();
 		if (dialog.open() == Window.OK) {
 			workbench.close();

@@ -1,7 +1,6 @@
 package com.amitinside.e4.rcp.todo.handlers;
 
 import java.util.List;
-
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;

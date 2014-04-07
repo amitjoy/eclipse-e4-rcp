@@ -2,9 +2,7 @@ package com.amitinside.e4.todo.contribute.parts;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-
 import javax.annotation.PostConstruct;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Composite;

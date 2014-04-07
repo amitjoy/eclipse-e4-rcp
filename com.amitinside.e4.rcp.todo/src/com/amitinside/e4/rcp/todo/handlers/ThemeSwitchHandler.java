@@ -14,9 +14,11 @@ public class ThemeSwitchHandler {
 	public void switchTheme(IThemeEngine engine) {
 		// second argument defines that change is
 		// persisted and restored on restart
+		System.out.println("################"+engine.getActiveTheme());
 		if (!engine.getActiveTheme().getId().equals(DEFAULT_THEME)) {
 			engine.setTheme(DEFAULT_THEME, true);
 		} else {
+			
 			engine.setTheme(RAINBOW_THEME, true);
 		}
 	}

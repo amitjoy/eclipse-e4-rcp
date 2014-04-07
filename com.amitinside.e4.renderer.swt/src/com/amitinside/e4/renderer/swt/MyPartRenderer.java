@@ -17,7 +17,7 @@ public class MyPartRenderer extends SWTPartRenderer {
 		System.out.println(parent.getClass());
 		mapComposite.setLayout(new GridLayout(1, false));
 		final Browser browser = new Browser(mapComposite, SWT.NONE);
-		browser.setUrl("http://www.vogella.com");
+		browser.setUrl("http://www.amitinside.com");
 		GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
 		browser.setLayoutData(data);
 		return mapComposite;
