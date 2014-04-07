@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Model Tests
 Bundle-SymbolicName: com.amitinside.e4.rcp.todo.model.test
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: EXAMPLE
+Bundle-Vendor: AMIT KUMAR MONDAL
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: com.amitinside.e4.rcp.todo.model;bundle-version="1.0.0",
  org.junit

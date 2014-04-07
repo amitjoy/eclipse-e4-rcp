@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Addons
 Bundle-SymbolicName: com.amitinside.e4.rcp.todo.addons
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: EXAMPLE
+Bundle-Vendor: AMIT KUMAR MONDAL
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.e4.core.services;bundle-version="1.0.0",
  javax.inject;bundle-version="1.0.0",

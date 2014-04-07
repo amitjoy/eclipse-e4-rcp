@@ -1,8 +1,10 @@
 package com.amitinside.e4.rcp.todo.parts;
 
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -40,6 +42,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
+
 import com.amitinside.e4.rcp.todo.events.MyEventConstants;
 import com.amitinside.e4.rcp.todo.model.ITodoService;
 import com.amitinside.e4.rcp.todo.model.Todo;
@@ -159,7 +162,7 @@ public class TodoOverviewPart {
 		TableViewerColumn colDescription = new TableViewerColumn(viewer,
 				SWT.NONE);
 
-		colDescription.getColumn().setWidth(100);
+		colDescription.getColumn().setWidth(200);
 		colDescription.getColumn().setText("Description");
 
 		// We search in the summary and description field
@@ -169,7 +172,37 @@ public class TodoOverviewPart {
 					Object element) {
 				Todo todo = (Todo) element;
 				return todo.getSummary().contains(searchString)
-						|| todo.getDescription().contains(searchString);
+						|| todo.getDescription().contains(searchString) || todo.getNote().contains(searchString);
+			}
+		});
+		
+		TableViewerColumn colNotes = new TableViewerColumn(viewer, SWT.NONE);
+		colNotes.getColumn().setWidth(50);
+		colNotes.getColumn().setText("Notes");
+		
+		colNotes.setEditingSupport(new EditingSupport(viewer) {
+
+			@Override
+			protected void setValue(Object element, Object value) {
+				Todo todo = (Todo) element;
+				todo.setNote(String.valueOf(value));
+				viewer.refresh();
+			}
+
+			@Override
+			protected Object getValue(Object element) {
+				Todo todo = (Todo) element;
+				return todo.getNote();
+			}
+
+			@Override
+			protected CellEditor getCellEditor(Object element) {
+				return new TextCellEditor(viewer.getTable(), SWT.NONE);
+			}
+
+			@Override
+			protected boolean canEdit(Object element) {
+				return true;
 			}
 		});
 
@@ -188,7 +221,7 @@ public class TodoOverviewPart {
 				viewer,
 				writableList,
 				BeanProperties.values(new String[] { Todo.FIELD_SUMMARY,
-						Todo.FIELD_DESCRIPTION }));
+						Todo.FIELD_DESCRIPTION, Todo.FIELD_NOTE }));
 
 	}
 

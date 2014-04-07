@@ -13,12 +13,14 @@ public class Todo {
 	public static final String FIELD_DESCRIPTION = "description";
 	public static final String FIELD_DONE = "done";
 	public static final String FIELD_DUEDATE = "dueDate";
+	public static final String FIELD_NOTE = "note";
 
 	public long id;
 	private String summary;
 	private String description;
 	private boolean done;
 	private Date dueDate;
+	private String note;
 
 	public Todo() {
 	}
@@ -27,12 +29,14 @@ public class Todo {
 		id = i;
 	}
 
-	public Todo(long i, String summary, String description, boolean b, Date date) {
+	public Todo(long i, String summary, String description, boolean b,
+			Date date, String note) {
 		this.id = i;
 		this.summary = summary;
 		this.description = description;
 		this.done = b;
 		this.dueDate = date;
+		this.note = note;
 	}
 
 	public long getId() {
@@ -46,6 +50,14 @@ public class Todo {
 	public void setSummary(String summary) {
 		changes.firePropertyChange(FIELD_SUMMARY, this.summary,
 				this.summary = summary);
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		changes.firePropertyChange(FIELD_NOTE, this.note, this.note = note);
 	}
 
 	public String getDescription() {
@@ -98,11 +110,11 @@ public class Todo {
 
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", summary=" + summary + "]";
+		return "Todo [id=" + id + ", summary=" + summary + ", note=" + note + "]";
 	}
 
 	public Todo copy() {
-		return new Todo(id, summary, description, done, dueDate);
+		return new Todo(id, summary, description, done, dueDate, note);
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener l) {

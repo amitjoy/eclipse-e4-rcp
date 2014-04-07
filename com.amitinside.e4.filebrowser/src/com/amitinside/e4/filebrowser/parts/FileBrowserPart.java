@@ -86,7 +86,7 @@ public class FileBrowserPart {
 
 		public Image getImage(Object element) {
 			File file = (File) element;
-			if (file.isDirectory()){
+			if (file.isDirectory()) {
 				return image;
 			}
 			return null;
@@ -97,7 +97,7 @@ public class FileBrowserPart {
 	public void setFocus() {
 		viewer.getControl().setFocus();
 	}
-	
+
 	@PreDestroy
 	public void dispose() {
 		image.dispose();

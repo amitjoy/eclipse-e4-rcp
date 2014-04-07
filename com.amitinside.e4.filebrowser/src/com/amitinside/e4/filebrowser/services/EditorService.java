@@ -15,7 +15,7 @@ public class EditorService {
 			EModelService modelService, URI uri) {
 		MUIElement find = modelService.find("editorarea", application);
 		MPart part = partService
-				.createPart("com.example.e4.rcp.todo.partdescriptor.fileeditor");
+				.createPart("com.amitinside.e4.rcp.todo.partdescriptor.fileeditor");
 		part.setLabel("New Dynamic Part");
 
 		// If multiple parts of this type is allowed

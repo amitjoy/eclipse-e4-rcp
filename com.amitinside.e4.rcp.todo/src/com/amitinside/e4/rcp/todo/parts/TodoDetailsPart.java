@@ -6,16 +6,21 @@ import javax.inject.Named;
 
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.UpdateValueStrategy;
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.ChangeEvent;
 import org.eclipse.core.databinding.observable.IChangeListener;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.core.databinding.validation.IValidator;
+import org.eclipse.core.databinding.validation.ValidationStatus;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.Persist;
 import org.eclipse.e4.ui.model.application.ui.MDirtyable;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -36,6 +41,7 @@ public class TodoDetailsPart {
 
 	private Text txtSummary;
 	private Text txtDescription;
+	private Text txtNote;
 	private Button btnDone;
 	private DateTime dateTime;
 	private DataBindingContext ctx = new DataBindingContext();
@@ -76,6 +82,12 @@ public class TodoDetailsPart {
 		gd.heightHint = 122;
 		txtDescription.setLayoutData(gd);
 
+		Label lblNote = new Label(parent, SWT.NONE);
+		lblNote.setText("Note");
+
+		txtNote = new Text(parent, SWT.BORDER);
+		txtNote.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+
 		Label lblNewLabel = new Label(parent, SWT.NONE);
 		lblNewLabel.setText("Due Date");
 
@@ -115,6 +127,7 @@ public class TodoDetailsPart {
 			txtDescription.setEnabled(enabled);
 			dateTime.setEnabled(enabled);
 			btnDone.setEnabled(enabled);
+			txtNote.setEnabled(enabled);
 		}
 	}
 
@@ -157,6 +170,27 @@ public class TodoDetailsPart {
 			model = BeanProperties.value(Todo.FIELD_DONE).observe(todo);
 			ctx.bindValue(target, model);
 
+			target = WidgetProperties.text(SWT.Modify).observe(txtNote);
+			model = BeanProperties.value(Todo.FIELD_NOTE).observe(todo);
+			IValidator validator = new IValidator() {
+
+				@Override
+				public IStatus validate(Object value) {
+					if (value instanceof String) {
+						if (((String) value).matches(".*\\d.*")) {
+							return ValidationStatus.OK_STATUS;
+						}
+					}
+					return ValidationStatus.error("This is not a number");
+				}
+			};
+
+			UpdateValueStrategy strategy = new UpdateValueStrategy();
+			strategy.setBeforeSetValidator(validator);
+
+			Binding bindvalue = ctx.bindValue(target, model, strategy, null);
+			ControlDecorationSupport.create(bindvalue, SWT.TOP | SWT.LEFT);
+
 			IObservableValue observeSelectionDateTimeObserveWidget = WidgetProperties
 					.selection().observe(dateTime);
 			IObservableValue dueDateTodoObserveValue = BeanProperties.value(
@@ -177,13 +211,15 @@ public class TodoDetailsPart {
 				Binding b = (Binding) o;
 				b.getTarget().addChangeListener(listener);
 			}
+
 		}
 	}
 
 	@Focus
 	public void onFocus() {
-		// The following assumes that you have a Text field
-		// called summary
+		// The following assumes that you have Text fields
+		// called summary and note
 		txtSummary.setFocus();
+		txtNote.setFocus();
 	}
 }

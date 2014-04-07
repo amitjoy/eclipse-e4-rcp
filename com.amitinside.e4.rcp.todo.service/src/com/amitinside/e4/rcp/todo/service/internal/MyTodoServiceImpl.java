@@ -3,11 +3,8 @@ package com.amitinside.e4.rcp.todo.service.internal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.eclipse.e4.core.services.events.IEventBroker;
-
 import com.amitinside.e4.rcp.todo.events.MyEventConstants;
 import com.amitinside.e4.rcp.todo.model.ITodoService;
 import com.amitinside.e4.rcp.todo.model.Todo;
@@ -38,20 +35,21 @@ public class MyTodoServiceImpl implements ITodoService {
 	// Saves or updates
 	@Override
 	public synchronized boolean saveTodo(Todo newTodo) {
-		boolean created =false;
+		boolean created = false;
 		Todo updateTodo = findById(newTodo.getId());
 		if (updateTodo == null) {
-			created=true;
-			updateTodo= new Todo(current++);
+			created = true;
+			updateTodo = new Todo(current++);
 			todos.add(updateTodo);
-		} 
+		}
 		updateTodo.setSummary(newTodo.getSummary());
 		updateTodo.setDescription(newTodo.getDescription());
 		updateTodo.setDone(newTodo.isDone());
 		updateTodo.setDueDate(newTodo.getDueDate());
-		
+		updateTodo.setNote(newTodo.getNote());
+
 		// Send out events
-		if (created){
+		if (created) {
 			broker.post(MyEventConstants.TOPIC_TODO_NEW, updateTodo);
 		} else {
 			broker.post(MyEventConstants.TOPIC_TODO_UPDATE, updateTodo);
@@ -82,22 +80,24 @@ public class MyTodoServiceImpl implements ITodoService {
 	}
 
 	// Example data, change if you like
-		private List<Todo> createInitialModel() {
-			List<Todo> list = new ArrayList<Todo>();
-			list.add(createTodo("Application model", "Flexible and extensible"));
-			list.add(createTodo("DI", "@Inject as programming mode"));
-			list.add(createTodo("OSGi", "Services"));
-			list.add(createTodo("SWT", "Widgets"));
-			list.add(createTodo("JFace", "Especially Viewers!"));
-			list.add(createTodo("CSS Styling","Style your application"));
-			list.add(createTodo("Eclipse services","Selection, model, Part"));
-			list.add(createTodo("Renderer","Different UI toolkit"));
-			list.add(createTodo("Compatibility Layer", "Run Eclipse 3.x"));
-			return list;
-		}
+	private List<Todo> createInitialModel() {
+		List<Todo> list = new ArrayList<Todo>();
+		list.add(createTodo("Application model", "Flexible and extensible",
+				"A1"));
+		list.add(createTodo("DI", "@Inject as programming mode", "B1"));
+		list.add(createTodo("OSGi", "Services", "C1"));
+		list.add(createTodo("SWT", "Widgets", "D1"));
+		list.add(createTodo("JFace", "Especially Viewers!", "E1"));
+		list.add(createTodo("CSS Styling", "Style your application", "F1"));
+		list.add(createTodo("Eclipse services", "Selection, model, Part", "G1"));
+		list.add(createTodo("Renderer", "Different UI toolkit", "H1"));
+		list.add(createTodo("Compatibility Layer", "Run Eclipse 3.x", "I1"));
+		return list;
+	}
 
-	private Todo createTodo(String summary, String description) {
-		return new Todo(current++, summary, description, false, new Date());
+	private Todo createTodo(String summary, String description, String notes) {
+		return new Todo(current++, summary, description, false, new Date(),
+				notes);
 	}
 
 	private Todo findById(long id) {

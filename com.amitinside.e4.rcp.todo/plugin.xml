@@ -16,7 +16,11 @@
           -->
          <property
                name="lifeCycleURI"
-               value="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.lifecycle.Manager">
+               value="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.lifecycle.NewManager">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
          </property>
           <!-- comments out of testing purposes
          <property
