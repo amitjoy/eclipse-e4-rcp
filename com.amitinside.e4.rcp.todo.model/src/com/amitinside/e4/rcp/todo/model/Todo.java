@@ -3,6 +3,7 @@ package com.amitinside.e4.rcp.todo.model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Date;
+import com.google.common.base.Objects;
 
 public class Todo {
 
@@ -110,7 +111,8 @@ public class Todo {
 
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", summary=" + summary + ", note=" + note + "]";
+		return Objects.toStringHelper(getClass()).add(FIELD_ID, id)
+				.add(FIELD_SUMMARY, summary).add(FIELD_NOTE, note).toString();
 	}
 
 	public Todo copy() {

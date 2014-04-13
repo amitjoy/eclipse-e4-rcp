@@ -67,6 +67,9 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_dMhXsAzKEeKhVv5pZDR7bA" elementId="com.amitinside.e4.rcp.todo.handledmenuitem.1" label="Add Part" command="_H4GNQAzJEeKhVv5pZDR7bA"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_j_48AA9fEeOcRapkQEuH9Q" elementId="com.amitinside.e4.rcp.todo.handledmenuitem.4" label="Evaluate extensions" command="_nTLRsA9fEeOcRapkQEuH9Q"/>
       </children>
+      <children xsi:type="menu:Menu" xmi:id="_kcBlYMFLEeO20Ksx5Y4otQ" elementId="com.amitinside.e4.rcp.todo.menu.locales" label="Language">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_owoOIMFLEeO20Ksx5Y4otQ" elementId="com.amitinside.e4.rcp.todo.handledmenuitem.i18n" label="Switch" command="_gDgTAMJpEeOHfLWABgGRjA"/>
+      </children>
     </mainMenu>
     <sharedElements xsi:type="basic:Part" xmi:id="_0Aiw4A5xEeK9y8PCk5W1FQ" elementId="com.amitinside.e4.rcp.todo.part.1" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.TodoOverviewPart" label="LazyTable"/>
     <trimBars xmi:id="_5T5nwMZuEeGbkqRLZ7osPQ" elementId="com.amitinside.e4.rcp.todo.trimbar.first">
@@ -87,6 +90,7 @@
   <handlers xmi:id="_kDBA0A37EeK2jbXfW93tpw" elementId="com.amitinside.e4.rcp.todo.handler.switchperspective" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.handlers.PerspectiveSwitchHandler" command="_W75ZkA37EeK2jbXfW93tpw"/>
   <handlers xmi:id="_pGsdwA9fEeOcRapkQEuH9Q" elementId="com.amitinside.e4.rcp.todo.handler.3" contributionURI="bundleclass://com.amitinside.extensionpoint.definition/com.amitinside.extensionpoint.definition.EvaluateContributionsHandler" command="_nTLRsA9fEeOcRapkQEuH9Q"/>
   <handlers xmi:id="_sipJgBAKEeO5vsQ2T1hWpw" elementId="com.amitinside.e4.rcp.todo.handler.dynamicpartmodelservice" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.handlers.DynamicPartHandler" command="_n9YOkBAKEeO5vsQ2T1hWpw"/>
+  <handlers xmi:id="_37_lEMFLEeO20Ksx5Y4otQ" elementId="com.amitinside.e4.rcp.todo.handler.changelocaleDE" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.handlers.ChangeLocale" command="_gDgTAMJpEeOHfLWABgGRjA"/>
   <rootContext xmi:id="_2jk_wMZvEeGbkqRLZ7osPQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="Windows and Dialogs" description="Windows and Dialogs"/>
   <descriptors xmi:id="_CR1k0AzIEeKhVv5pZDR7bA" elementId="com.amitinside.e4.rcp.todo.partdescriptor.dynamic" label="Dynamic Part" allowMultiple="true" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.DynamicPart"/>
   <commands xmi:id="_vTZDkMZXEeGbkqRLZ7osPQ" elementId="org.eclipse.ui.file.saveAll" commandName="Save"/>
@@ -101,6 +105,7 @@
   <commands xmi:id="_W75ZkA37EeK2jbXfW93tpw" elementId="com.amitinside.e4.rcp.todo.command.switchperspective" commandName="Switch Perspective"/>
   <commands xmi:id="_nTLRsA9fEeOcRapkQEuH9Q" elementId="com.amitinside.e4.rcp.todo.command.extensions" commandName="Evaluate extensions"/>
   <commands xmi:id="_n9YOkBAKEeO5vsQ2T1hWpw" elementId="com.amitinside.e4.rcp.todo.command.dynamicpartcode" commandName="Create Part dynamically  via model service"/>
+  <commands xmi:id="_gDgTAMJpEeOHfLWABgGRjA" elementId="com.amitinside.e4.rcp.todo.command.i18n" commandName="Change Locale"/>
   <addons xmi:id="_kRdLcb-ZEeGFAvs8os6Opw" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_kRdLcr-ZEeGFAvs8os6Opw" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_kRdLc7-ZEeGFAvs8os6Opw" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

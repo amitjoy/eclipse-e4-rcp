@@ -16,6 +16,9 @@ import org.eclipse.core.databinding.validation.IValidator;
 import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.services.log.Logger;
+import org.eclipse.e4.core.services.nls.Translation;
+import org.eclipse.e4.core.services.translation.TranslationService;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.Persist;
 import org.eclipse.e4.ui.model.application.ui.MDirtyable;
@@ -31,6 +34,8 @@ import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import com.amitinside.e4.rcp.todo.i18n.LocalizationHelper;
+import com.amitinside.e4.rcp.todo.i18n.Messages;
 import com.amitinside.e4.rcp.todo.model.ITodoService;
 import com.amitinside.e4.rcp.todo.model.Todo;
 
@@ -38,6 +43,13 @@ public class TodoDetailsPart {
 
 	@Inject
 	MDirtyable dirty;
+	
+	@Inject
+	Logger logger;
+
+	@Inject
+	@Translation
+	Messages messages;
 
 	private Text txtSummary;
 	private Text txtDescription;
@@ -45,6 +57,9 @@ public class TodoDetailsPart {
 	private Button btnDone;
 	private DateTime dateTime;
 	private DataBindingContext ctx = new DataBindingContext();
+
+	private Label lblSummary;
+	private Label lblDescription;
 
 	// Define listener for the databinding
 	IChangeListener listener = new IChangeListener() {
@@ -57,6 +72,10 @@ public class TodoDetailsPart {
 	};
 	private Todo todo;
 
+	private Label lblNote;
+
+	private Label lblNewLabel;
+
 	@PostConstruct
 	public void createControls(Composite parent) {
 
@@ -67,29 +86,29 @@ public class TodoDetailsPart {
 		gl_parent.marginWidth = 0;
 		parent.setLayout(gl_parent);
 
-		Label lblSummary = new Label(parent, SWT.NONE);
-		lblSummary.setText("Summary");
+		lblSummary = new Label(parent, SWT.NONE);
+		lblSummary.setText(messages.TodoDetailsPart_0);
 
 		txtSummary = new Text(parent, SWT.BORDER);
 		txtSummary
 				.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
-		Label lblDescription = new Label(parent, SWT.NONE);
-		lblDescription.setText("Description");
+		lblDescription = new Label(parent, SWT.NONE);
+		lblDescription.setText(messages.TodoDetailsPart_1);
 
 		txtDescription = new Text(parent, SWT.BORDER | SWT.MULTI);
 		GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		gd.heightHint = 122;
 		txtDescription.setLayoutData(gd);
 
-		Label lblNote = new Label(parent, SWT.NONE);
-		lblNote.setText("Note");
+		lblNote = new Label(parent, SWT.NONE);
+		lblNote.setText(messages.TodoDetailsPart_2);
 
 		txtNote = new Text(parent, SWT.BORDER);
 		txtNote.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
-		Label lblNewLabel = new Label(parent, SWT.NONE);
-		lblNewLabel.setText("Due Date");
+		lblNewLabel = new Label(parent, SWT.NONE);
+		lblNewLabel.setText(messages.TodoDetailsPart_3);
 
 		dateTime = new DateTime(parent, SWT.BORDER);
 		dateTime.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false,
@@ -97,7 +116,7 @@ public class TodoDetailsPart {
 		new Label(parent, SWT.NONE);
 
 		btnDone = new Button(parent, SWT.CHECK);
-		btnDone.setText("Done");
+		btnDone.setText(messages.TodoDetailsPart_4);
 
 		updateUserInterface(todo);
 	}
@@ -177,11 +196,12 @@ public class TodoDetailsPart {
 				@Override
 				public IStatus validate(Object value) {
 					if (value instanceof String) {
-						if (((String) value).matches(".*\\d.*")) {
+						if (((String) value)
+								.matches(messages.TodoDetailsPart_5)) {
 							return ValidationStatus.OK_STATUS;
 						}
 					}
-					return ValidationStatus.error("This is not a number");
+					return ValidationStatus.error(messages.TodoDetailsPart_6);
 				}
 			};
 
@@ -221,5 +241,19 @@ public class TodoDetailsPart {
 		// called summary and note
 		txtSummary.setFocus();
 		txtNote.setFocus();
+	}
+
+	@Inject
+	@Optional
+	private void getNotified(@Named(TranslationService.LOCALE) String s,
+			@Translation Messages messages, @Named("locale") String locale) {
+		System.out.println(locale);
+		LocalizationHelper.updateLabelText(lblSummary,
+				messages.TodoDetailsPart_0);
+		LocalizationHelper.updateLabelText(lblDescription,
+				messages.TodoDetailsPart_1);
+		LocalizationHelper.updateLabelText(lblNote, messages.TodoDetailsPart_2);
+		LocalizationHelper.updateLabelText(lblNewLabel,
+	messages.TodoDetailsPart_3);
 	}
 }

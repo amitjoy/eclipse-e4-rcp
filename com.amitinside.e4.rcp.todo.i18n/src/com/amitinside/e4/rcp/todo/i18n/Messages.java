@@ -1,17 +1,16 @@
 package com.amitinside.e4.rcp.todo.i18n;
 
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.e4.core.services.nls.Message;
 
-public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "com.amitinside.e4.rcp.todo.i18n.messages"; //$NON-NLS-1$
+@Message(contributorURI = "platform:/fragment/com.amitinside.e4.rcp.todo.i18n")
+public class Messages {
 	public static String TodoOverviewPart_0;
 	public static String TodoDeletionPart_0;
-	// More string values....
-	static {
-		// initialize resource bundle
-		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
-	}
-
-	private Messages() {
-	}
+	public static String TodoDetailsPart_0;
+	public static String TodoDetailsPart_1;
+	public static String TodoDetailsPart_2;
+	public static String TodoDetailsPart_3;
+	public static String TodoDetailsPart_4;
+	public static String TodoDetailsPart_5;
+	public static String TodoDetailsPart_6;
 }

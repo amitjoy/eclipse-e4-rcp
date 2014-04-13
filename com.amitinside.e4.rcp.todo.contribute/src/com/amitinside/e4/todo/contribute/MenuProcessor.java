@@ -24,13 +24,10 @@ public class MenuProcessor {
 
 	@Execute
 	public void execute() {
-		// System.out.println("Starting processor");
 		// Remove the old exit menu entry
 		if (menu != null && menu.getChildren() != null) {
 			List<MMenuElement> list = new ArrayList<MMenuElement>();
 			for (MMenuElement element : menu.getChildren()) {
-				System.out.println(element);
-
 				// Separaters have no label hence we
 				// need to check for null
 				if (element.getLabel() != null) {
