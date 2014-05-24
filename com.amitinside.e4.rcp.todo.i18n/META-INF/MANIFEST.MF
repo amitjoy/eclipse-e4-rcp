@@ -4,7 +4,7 @@ Bundle-Name: I18n
 Bundle-SymbolicName: com.amitinside.e4.rcp.todo.i18n
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: AMIT KUMAR MONDAL
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.e4.core.services;bundle-version="1.2.0"
 Export-Package: com.amitinside.e4.rcp.todo.i18n

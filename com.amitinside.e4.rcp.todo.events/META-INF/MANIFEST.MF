@@ -4,5 +4,4 @@ Bundle-Name: Events
 Bundle-SymbolicName: com.amitinside.e4.rcp.todo.events
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: AMIT KUMAR MONDAL
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: com.amitinside.e4.rcp.todo.events
