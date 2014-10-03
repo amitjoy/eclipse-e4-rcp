@@ -118,10 +118,10 @@
    </plugins>
 
    <features>
-      <feature id="com.example.e4.rcp.wizard.feature" version="1.0.0.qualifier"/>
       <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
+      <feature id="com.amitinside.e4.rcp.wizard.feature" version="1.0.0.qualifier"/>
    </features>
 
 
