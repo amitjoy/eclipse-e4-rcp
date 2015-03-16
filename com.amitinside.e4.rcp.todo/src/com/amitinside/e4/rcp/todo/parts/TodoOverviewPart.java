@@ -1,5 +1,7 @@
 package com.amitinside.e4.rcp.todo.parts;
 
+import static com.amitinside.swt.layout.grid.GridLayoutUtil.applyGridLayout;
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -36,7 +38,6 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -54,30 +55,32 @@ public class TodoOverviewPart {
 	private Label lblNewLabel;
 	private TableViewer viewer;
 
-	@Inject
-	UISynchronize sync;
-
-	@Inject
-	ESelectionService service;
-
-	@Inject
-	IEventBroker broker;
-
-	@Inject
-	ITodoService model;
+	private final UISynchronize sync;
+	private final ESelectionService service;
+	private final IEventBroker broker;
+	private final ITodoService model;
 	private WritableList writableList;
 	protected String searchString = "";
+
+	@Inject
+	public TodoOverviewPart(UISynchronize sync, ESelectionService service,
+			IEventBroker broker, ITodoService model) {
+		this.sync = sync;
+		this.service = service;
+		this.broker = broker;
+		this.model = model;
+	}
 
 	@PostConstruct
 	public void createControls(Composite parent, final MWindow window,
 			EMenuService menuService) {
-		parent.setLayout(new GridLayout(1, false));
+		applyGridLayout(parent).numColumns(1);
 
 		btnNewButton = new Button(parent, SWT.PUSH);
 		btnNewButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Job job = new Job("loading") {
+				final Job job = new Job("loading") {
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
 						final List<Todo> list = model.getTodos();
@@ -90,7 +93,7 @@ public class TodoOverviewPart {
 		});
 		btnNewButton.setText("Load Data");
 
-		Text search = new Text(parent, SWT.SEARCH | SWT.CANCEL
+		final Text search = new Text(parent, SWT.SEARCH | SWT.CANCEL
 				| SWT.ICON_SEARCH);
 
 		// Assuming that GridLayout is used
@@ -102,7 +105,7 @@ public class TodoOverviewPart {
 		search.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
-				Text source = (Text) e.getSource();
+				final Text source = (Text) e.getSource();
 				searchString = source.getText();
 				// Trigger update in the viewer
 				viewer.refresh();
@@ -112,9 +115,10 @@ public class TodoOverviewPart {
 		// SWT.SEARCH | SWT.CANCEL not supported under Windows7
 		// This does not work under Windows7
 		search.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				if (e.detail == SWT.CANCEL) {
-					Text text = (Text) e.getSource();
+					final Text text = (Text) e.getSource();
 					text.setText("");
 					//
 				}
@@ -123,13 +127,14 @@ public class TodoOverviewPart {
 
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
-		Table table = viewer.getTable();
+		final Table table = viewer.getTable();
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 
-		TableViewerColumn colSummary = new TableViewerColumn(viewer, SWT.NONE);
+		final TableViewerColumn colSummary = new TableViewerColumn(viewer,
+				SWT.NONE);
 
 		colSummary.getColumn().setWidth(100);
 		colSummary.getColumn().setText("Summary");
@@ -138,14 +143,14 @@ public class TodoOverviewPart {
 
 			@Override
 			protected void setValue(Object element, Object value) {
-				Todo todo = (Todo) element;
+				final Todo todo = (Todo) element;
 				todo.setSummary(String.valueOf(value));
 				viewer.refresh();
 			}
 
 			@Override
 			protected Object getValue(Object element) {
-				Todo todo = (Todo) element;
+				final Todo todo = (Todo) element;
 				return todo.getSummary();
 			}
 
@@ -159,7 +164,7 @@ public class TodoOverviewPart {
 				return true;
 			}
 		});
-		TableViewerColumn colDescription = new TableViewerColumn(viewer,
+		final TableViewerColumn colDescription = new TableViewerColumn(viewer,
 				SWT.NONE);
 
 		colDescription.getColumn().setWidth(200);
@@ -170,28 +175,30 @@ public class TodoOverviewPart {
 			@Override
 			public boolean select(Viewer viewer, Object parentElement,
 					Object element) {
-				Todo todo = (Todo) element;
+				final Todo todo = (Todo) element;
 				return todo.getSummary().contains(searchString)
-						|| todo.getDescription().contains(searchString) || todo.getNote().contains(searchString);
+						|| todo.getDescription().contains(searchString)
+						|| todo.getNote().contains(searchString);
 			}
 		});
-		
-		TableViewerColumn colNotes = new TableViewerColumn(viewer, SWT.NONE);
+
+		final TableViewerColumn colNotes = new TableViewerColumn(viewer,
+				SWT.NONE);
 		colNotes.getColumn().setWidth(50);
 		colNotes.getColumn().setText("Notes");
-		
+
 		colNotes.setEditingSupport(new EditingSupport(viewer) {
 
 			@Override
 			protected void setValue(Object element, Object value) {
-				Todo todo = (Todo) element;
+				final Todo todo = (Todo) element;
 				todo.setNote(String.valueOf(value));
 				viewer.refresh();
 			}
 
 			@Override
 			protected Object getValue(Object element) {
-				Todo todo = (Todo) element;
+				final Todo todo = (Todo) element;
 				return todo.getNote();
 			}
 
@@ -209,14 +216,14 @@ public class TodoOverviewPart {
 		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				IStructuredSelection selection = (IStructuredSelection) viewer
+				final IStructuredSelection selection = (IStructuredSelection) viewer
 						.getSelection();
 				service.setSelection(selection.getFirstElement());
 			}
 		});
 		menuService.registerContextMenu(viewer.getControl(),
 				"com.amitinside.e4.rcp.todo.popupmenu.table");
-		writableList = new WritableList(model.getTodos(), Todo.class);
+		writableList = new WritableList<Todo>(model.getTodos(), Todo.class);
 		ViewerSupport.bind(
 				viewer,
 				writableList,

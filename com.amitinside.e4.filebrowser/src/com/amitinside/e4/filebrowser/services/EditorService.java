@@ -13,8 +13,8 @@ public class EditorService {
 
 	public void createPart(MApplication application, EPartService partService,
 			EModelService modelService, URI uri) {
-		MUIElement find = modelService.find("editorarea", application);
-		MPart part = partService
+		final MUIElement find = modelService.find("editorarea", application);
+		final MPart part = partService
 				.createPart("com.amitinside.e4.rcp.todo.partdescriptor.fileeditor");
 		part.setLabel("New Dynamic Part");
 

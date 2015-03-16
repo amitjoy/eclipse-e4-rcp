@@ -8,4 +8,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: com.amitinside.e4.rcp.todo.model
 Require-Bundle: org.eclipse.equinox.event;bundle-version="1.2.200",
  org.eclipse.e4.core.services;bundle-version="1.0.0",
- com.google.guava;bundle-version="17.0.0"
+ com.google.guava

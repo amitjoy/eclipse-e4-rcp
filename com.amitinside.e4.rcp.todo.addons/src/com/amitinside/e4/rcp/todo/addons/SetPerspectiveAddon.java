@@ -1,9 +1,7 @@
 package com.amitinside.e4.rcp.todo.addons;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
-import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.equinox.app.IApplicationContext;
 
 public class SetPerspectiveAddon {
@@ -15,14 +13,14 @@ public class SetPerspectiveAddon {
 		System.out.println("I'm called");
 		args = (String[]) context.getArguments().get(
 				IApplicationContext.APPLICATION_ARGS);
-		for (Object value : args) {
+		for (final Object value : args) {
 			System.out.println(value);
 		}
-		String perspective = getArgValue("perspective", context, false);
+		final String perspective = getArgValue("perspective", context, false);
 		System.out.println(perspective);
 		// TODO Inject ModelService and PartServise and set the perspective
 	}
-	
+
 	private String getArgValue(String argName, IApplicationContext appContext,
 			boolean singledCmdArgValue) {
 		// Is it in the arg list ?

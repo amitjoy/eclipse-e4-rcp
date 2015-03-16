@@ -16,6 +16,7 @@
                   <children xsi:type="menu:HandledMenuItem" xmi:id="_dxcH8BBrEeOc8MniUgVQ2w" elementId="com.amitinside.e4.rcp.todo.handledmenuitem.openeditor" label="Open in editor" command="_vGK5kA1pEeKkaoNsQKzVcw"/>
                 </menus>
               </children>
+              <children xsi:type="basic:Part" xmi:id="_h3pYcMqJEeS5rfSTsyxuOQ" elementId="com.amitinside.e4.rcp.todo.part.formsuipractice" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.FormsUIPart" label="Forms UI Practice" tooltip="Practicing Forms UI"/>
             </children>
             <children xsi:type="basic:PartStack" xmi:id="_9SkyUAzDEeKhVv5pZDR7bA" elementId="com.amitinside.e4.rcp.todo.partstack.1" containerData="40">
               <children xsi:type="basic:Part" xmi:id="_9uFpoAzDEeKhVv5pZDR7bA" elementId="com.amitinside.e4.rcp.todo.part.tododelete" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.TodoDeletionPart" label="Delete "/>
@@ -24,6 +25,8 @@
           <children xsi:type="basic:PartSashContainer" xmi:id="_8pglUL-iEeGIRPhGyuFE7Q" elementId="com.amitinside.e4.rcp.todo.partsashcontainer.right" containerData="60">
             <children xsi:type="basic:PartStack" xmi:id="_69BOUL-iEeGIRPhGyuFE7Q" elementId="com.amitinside.e4.rcp.todo.partstack.0">
               <children xsi:type="basic:Part" xmi:id="_YrtEwL-jEeGIRPhGyuFE7Q" elementId="com.amitinside.e4.rcp.todo.part.tododetails" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.TodoDetailsPart" label="Details"/>
+              <children xsi:type="basic:Part" xmi:id="_zOh8AMqaEeS5rfSTsyxuOQ" elementId="com.amitinside.e4.rcp.todo.part.samplePart.formsAPI" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.SampleFormUsingFormsAPI" label="Sample Form using Forms API" tooltip="Sample Form using Forms API" closeable="true"/>
+              <children xsi:type="basic:Part" xmi:id="_J6Y-MMrCEeS5rfSTsyxuOQ" elementId="com.amitinside.e4.rcp.todo.part.anotherFormAPI" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.SampleUIAdapat" label="Another Example of Form API" tooltip="Another Example of Form API"/>
             </children>
             <children xsi:type="basic:PartStack" xmi:id="_-ORjsL-iEeGIRPhGyuFE7Q" elementId="com.amitinside.e4.rcp.todo.partstack.bottom">
               <children xsi:type="basic:Part" xmi:id="_ZHOjIL-jEeGIRPhGyuFE7Q" elementId="com.amitinside.e4.rcp.todo.part.playground" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.PlaygroundPart" label="Playground"/>

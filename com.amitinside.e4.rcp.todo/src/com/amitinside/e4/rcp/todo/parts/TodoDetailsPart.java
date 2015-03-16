@@ -43,7 +43,7 @@ public class TodoDetailsPart {
 
 	@Inject
 	MDirtyable dirty;
-	
+
 	@Inject
 	Logger logger;
 
@@ -56,13 +56,13 @@ public class TodoDetailsPart {
 	private Text txtNote;
 	private Button btnDone;
 	private DateTime dateTime;
-	private DataBindingContext ctx = new DataBindingContext();
+	private final DataBindingContext ctx = new DataBindingContext();
 
 	private Label lblSummary;
 	private Label lblDescription;
 
 	// Define listener for the databinding
-	IChangeListener listener = new IChangeListener() {
+	private final IChangeListener listener = new IChangeListener() {
 		@Override
 		public void handleChange(ChangeEvent event) {
 			if (dirty != null) {
@@ -79,7 +79,7 @@ public class TodoDetailsPart {
 	@PostConstruct
 	public void createControls(Composite parent) {
 
-		GridLayout gl_parent = new GridLayout(2, false);
+		final GridLayout gl_parent = new GridLayout(2, false);
 		gl_parent.marginRight = 10;
 		gl_parent.marginLeft = 10;
 		gl_parent.horizontalSpacing = 10;
@@ -97,7 +97,7 @@ public class TodoDetailsPart {
 		lblDescription.setText(messages.TodoDetailsPart_1);
 
 		txtDescription = new Text(parent, SWT.BORDER | SWT.MULTI);
-		GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
+		final GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		gd.heightHint = 122;
 		txtDescription.setLayoutData(gd);
 
@@ -167,8 +167,8 @@ public class TodoDetailsPart {
 
 			// Deregister change listener to the old binding
 			IObservableList providers = ctx.getValidationStatusProviders();
-			for (Object o : providers) {
-				Binding b = (Binding) o;
+			for (final Object o : providers) {
+				final Binding b = (Binding) o;
 				b.getTarget().removeChangeListener(listener);
 			}
 
@@ -191,7 +191,7 @@ public class TodoDetailsPart {
 
 			target = WidgetProperties.text(SWT.Modify).observe(txtNote);
 			model = BeanProperties.value(Todo.FIELD_NOTE).observe(todo);
-			IValidator validator = new IValidator() {
+			final IValidator validator = new IValidator() {
 
 				@Override
 				public IStatus validate(Object value) {
@@ -205,30 +205,31 @@ public class TodoDetailsPart {
 				}
 			};
 
-			UpdateValueStrategy strategy = new UpdateValueStrategy();
+			final UpdateValueStrategy strategy = new UpdateValueStrategy();
 			strategy.setBeforeSetValidator(validator);
 
-			Binding bindvalue = ctx.bindValue(target, model, strategy, null);
+			final Binding bindvalue = ctx.bindValue(target, model, strategy,
+					null);
 			ControlDecorationSupport.create(bindvalue, SWT.TOP | SWT.LEFT);
 
-			IObservableValue observeSelectionDateTimeObserveWidget = WidgetProperties
+			final IObservableValue observeSelectionDateTimeObserveWidget = WidgetProperties
 					.selection().observe(dateTime);
-			IObservableValue dueDateTodoObserveValue = BeanProperties.value(
-					Todo.FIELD_DUEDATE).observe(todo);
+			final IObservableValue dueDateTodoObserveValue = BeanProperties
+					.value(Todo.FIELD_DUEDATE).observe(todo);
 			ctx.bindValue(observeSelectionDateTimeObserveWidget,
 					dueDateTodoObserveValue);
 
 			// register listener for any changes
 			providers = ctx.getValidationStatusProviders();
-			for (Object o : providers) {
-				Binding b = (Binding) o;
+			for (final Object o : providers) {
+				final Binding b = (Binding) o;
 				b.getTarget().addChangeListener(listener);
 			}
 
 			// Register for the changes
 			providers = ctx.getValidationStatusProviders();
-			for (Object o : providers) {
-				Binding b = (Binding) o;
+			for (final Object o : providers) {
+				final Binding b = (Binding) o;
 				b.getTarget().addChangeListener(listener);
 			}
 
@@ -254,6 +255,6 @@ public class TodoDetailsPart {
 				messages.TodoDetailsPart_1);
 		LocalizationHelper.updateLabelText(lblNote, messages.TodoDetailsPart_2);
 		LocalizationHelper.updateLabelText(lblNewLabel,
-	messages.TodoDetailsPart_3);
+				messages.TodoDetailsPart_3);
 	}
 }
