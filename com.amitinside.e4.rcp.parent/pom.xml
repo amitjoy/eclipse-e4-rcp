@@ -48,7 +48,7 @@
 		<!-- http://maven.apache.org/general.html#encoding-warning -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<tycho-version>0.19.0</tycho-version>
+		<tycho-version>0.22.0</tycho-version>
 
 		<!-- no default here -->
 		<tycho.test.vm.argline>-Xmx500m -Xdebug
@@ -116,8 +116,8 @@
 					<!-- use existing target platform definition -->
 					<target>
 						<artifact>
-							<groupId>com.example.e4.rcp</groupId>
-							<artifactId>com.example.e4.rcp.todo.target</artifactId>
+							<groupId>com.amitinside.e4.rcp</groupId>
+							<artifactId>com.amitinside.e4.rcp.todo.target</artifactId>
 							<version>1.0.0-SNAPSHOT</version>
 							<classifier>eclipse4rcp</classifier>
 						</artifact>
