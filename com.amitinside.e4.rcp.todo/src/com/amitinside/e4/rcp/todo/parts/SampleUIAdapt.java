@@ -29,7 +29,7 @@ import com.amitinside.e4.rcp.todo.model.Todo;
 import de.ralfebert.rcputils.random.RandomData;
 import de.ralfebert.rcputils.tables.TableViewerBuilder;
 
-public final class SampleUIAdapat {
+public final class SampleUIAdapt {
 
 	private final ITodoService service;
 	private final ESelectionService selectionService;
@@ -45,7 +45,7 @@ public final class SampleUIAdapat {
 	};
 
 	@Inject
-	public SampleUIAdapat(ITodoService service,
+	public SampleUIAdapt(ITodoService service,
 			ESelectionService selectionService, IEclipseContext context) {
 		this.service = service;
 		this.selectionService = selectionService;

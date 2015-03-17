@@ -23,11 +23,11 @@
                value="plugin_customization.ini">
          </property>
           <!-- Primarily used to specify css file to use for the E4 Application -->
-         <!--<property
+         <property
                name="applicationCSS"
                value="platform:/plugin/com.amitinside.e4.rcp.todo/css/jeeeyul.css">
          </property>
-          Used for testing purposes
+         <!-- Used for testing purposes
          <property
                name="rendererFactoryUri"
                value="bundleclass://com.amitinside.e4.renderer.swt/com.example.e4.renderer.swt.MyRendererFactory">
@@ -53,6 +53,11 @@
             basestylesheeturi="css/rainbow.css"
             id="com.amitinside.e4.rcp.todo.rainbow"
             label="Rainbow">
+      </theme>
+      <theme
+            basestylesheeturi="css/custom.css"
+            id="com.amitinside.e4.rcp.todo.custom"
+            label="Custom">
       </theme>
    </extension>
  
