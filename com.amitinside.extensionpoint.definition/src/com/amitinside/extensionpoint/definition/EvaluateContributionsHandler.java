@@ -8,34 +8,33 @@ import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.e4.core.di.annotations.Execute;
 
 public class EvaluateContributionsHandler {
-	private static final String IGREETER_ID = 
-			"com.amitinside.extensionpoint.definition.greeter";
+	private static final String IGREETER_ID = "com.amitinside.extensionpoint.definition.greeter";
+
 	@Execute
-	public void execute(IExtensionRegistry registry) {
+	public void execute(final IExtensionRegistry registry) {
 		evaluate(registry);
 	}
-	
-	private void evaluate(IExtensionRegistry registry) {
-		IConfigurationElement[] config =
-				registry.getConfigurationElementsFor(IGREETER_ID);
+
+	private void evaluate(final IExtensionRegistry registry) {
+		final IConfigurationElement[] config = registry
+				.getConfigurationElementsFor(IGREETER_ID);
 		try {
-			for (IConfigurationElement e : config) {
+			for (final IConfigurationElement e : config) {
 				System.out.println("Evaluating extension");
-				final Object o =
-						e.createExecutableExtension("class");
+				final Object o = e.createExecutableExtension("class");
 				if (o instanceof IGreeter) {
 					executeExtension(o);
 				}
 			}
-		} catch (CoreException ex) {
+		} catch (final CoreException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
 
 	private void executeExtension(final Object o) {
-		ISafeRunnable runnable = new ISafeRunnable() {
+		final ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
-			public void handleException(Throwable e) {
+			public void handleException(final Throwable e) {
 				System.out.println("Exception in client");
 			}
 

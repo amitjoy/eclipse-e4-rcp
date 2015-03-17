@@ -22,12 +22,12 @@
                name="preferenceCustomization"
                value="plugin_customization.ini">
          </property>
-          <!-- comments out of testing purposes
+          <!-- Primarily used to specify css file to use for the E4 Application -->
          <property
                name="applicationCSS"
-               value="platform:/plugin/com.amitinside.e4.rcp.todo/css/rainbow.css">
+               value="platform:/plugin/com.amitinside.e4.rcp.todo/css/jeeeyul.css">
          </property>
-         
+         <!-- Used for testing purposes
          <property
                name="rendererFactoryUri"
                value="bundleclass://com.amitinside.e4.renderer.swt/com.example.e4.renderer.swt.MyRendererFactory">
@@ -41,10 +41,11 @@
          -->
       </product>
    </extension>
+
    <extension
          point="org.eclipse.e4.ui.css.swt.theme">
       <theme
-            basestylesheeturi="css/default.css"
+            basestylesheeturi="css/jeeeyul.css"
             id="com.amitinside.e4.rcp.todo.default"
             label="Default Theme">
       </theme>

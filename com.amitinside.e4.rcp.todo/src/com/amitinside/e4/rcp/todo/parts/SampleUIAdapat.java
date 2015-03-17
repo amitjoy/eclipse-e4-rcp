@@ -34,12 +34,12 @@ public final class SampleUIAdapat {
 	private final ITodoService service;
 	private final ESelectionService selectionService;
 	private TableViewerBuilder t;
-	private final IObservableList<Todo> list;
+	private final IObservableList list;
 	private final IEclipseContext context;
-	private final IListChangeListener listener = new IListChangeListener<Todo>() {
+	private final IListChangeListener listener = new IListChangeListener() {
 
 		@Override
-		public void handleListChange(ListChangeEvent<Todo> paramListChangeEvent) {
+		public void handleListChange(ListChangeEvent paramListChangeEvent) {
 			updateViewer();
 		}
 	};
@@ -50,7 +50,7 @@ public final class SampleUIAdapat {
 		this.service = service;
 		this.selectionService = selectionService;
 		this.context = context;
-		list = new WritableList<Todo>();
+		list = new WritableList();
 	}
 
 	@PostConstruct

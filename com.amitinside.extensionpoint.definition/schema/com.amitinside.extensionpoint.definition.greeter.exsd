@@ -55,7 +55,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":com.vogella.extensionpoint.definition.IGreeter"/>
+                  <meta.attribute kind="java" basedOn=":com.amitinside.extensionpoint.definition.IGreeter"/>
                </appinfo>
             </annotation>
          </attribute>

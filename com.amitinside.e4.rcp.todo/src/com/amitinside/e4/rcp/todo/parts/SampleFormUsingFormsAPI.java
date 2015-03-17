@@ -148,9 +148,9 @@ public class SampleFormUsingFormsAPI {
 			// Remove bindings
 			dbc.dispose();
 
-			final IObservableValue<Object> target = WidgetProperties.text()
-					.observe(textTo);
-			final IObservableValue<Object> model = BeanProperties.value(
+			final IObservableValue target = WidgetProperties.text().observe(
+					textTo);
+			final IObservableValue model = BeanProperties.value(
 					Todo.FIELD_SUMMARY).observe(todo);
 			dbc.bindValue(target, model);
 

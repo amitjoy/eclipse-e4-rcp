@@ -13,7 +13,7 @@
     <mainMenu xmi:id="_3b2pCSLcEeKIuqD46Xwhnw" elementId="menu:org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_3b2pCiLcEeKIuqD46Xwhnw" label="File">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_3b2pCyLcEeKIuqD46Xwhnw" label="Open" iconURI="platform:/plugin/com.amitinside.e4.rcp.wizard/icons/sample.gif" command="_3b2pACLcEeKIuqD46Xwhnw"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_3b2pDCLcEeKIuqD46Xwhnw" label="Save" iconURI="platform:/plugin/com.example.e4.rcp.wizard/icons/save_edit.gif" command="_3b2pAyLcEeKIuqD46Xwhnw"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_3b2pDCLcEeKIuqD46Xwhnw" label="Save" iconURI="platform:/plugin/com.amitinside.e4.rcp.wizard/icons/save_edit.gif" command="_3b2pAyLcEeKIuqD46Xwhnw"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_3b2pDSLcEeKIuqD46Xwhnw" label="Quit" command="_3b2B-yLcEeKIuqD46Xwhnw"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_3b2pDiLcEeKIuqD46Xwhnw" label="Help">

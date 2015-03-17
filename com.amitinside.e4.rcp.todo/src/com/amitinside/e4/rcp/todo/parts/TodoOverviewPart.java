@@ -223,7 +223,7 @@ public class TodoOverviewPart {
 		});
 		menuService.registerContextMenu(viewer.getControl(),
 				"com.amitinside.e4.rcp.todo.popupmenu.table");
-		writableList = new WritableList<Todo>(model.getTodos(), Todo.class);
+		writableList = new WritableList(model.getTodos(), Todo.class);
 		ViewerSupport.bind(
 				viewer,
 				writableList,
