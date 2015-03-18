@@ -11,6 +11,7 @@ Require-Bundle: com.amitinside.e4.rcp.todo.model;bundle-version="1.0.0",
  org.eclipse.e4.core.contexts;bundle-version="1.1.0",
  javax.inject;bundle-version="1.0.0",
  org.eclipse.e4.core.di,
- org.eclipse.e4.ui.model.workbench
+ org.eclipse.e4.ui.model.workbench,
+ com.amitinside.e4.rcp.todo.model.emf;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/service.xml

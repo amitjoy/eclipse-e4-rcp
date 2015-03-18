@@ -3,7 +3,6 @@
 
 <product name="to-do" uid="com.amitinside.e4.rcp.todo.product" id="com.amitinside.e4.rcp.todo.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" useFeatures="true" includeLaunchers="false">
 
-
    <configIni use="default">
    </configIni>
 
@@ -25,11 +24,9 @@
       </win>
    </launcher>
 
-
    <vm>
       <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</macos>
    </vm>
-
 
    <plugins>
       <plugin id="com.ibm.icu"/>
@@ -103,6 +100,7 @@
       <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
       <feature id="org.eclipse.ecf.core.feature"/>
       <feature id="org.eclipse.ecf.filetransfer.feature"/>
+      <feature id="org.eclipse.emf.databinding" version="1.4.0.v20150123-0452"/>
    </features>
 
    <configurations>

@@ -10,6 +10,7 @@ import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.UIEventTopic;
+import org.eclipse.e4.ui.workbench.IWorkbench;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
@@ -22,20 +23,26 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 
+import com.amitinside.e4.rcp.model.emf.Todo.Todo;
+import com.amitinside.e4.rcp.model.emf.Todo.TodoPackage;
+import com.amitinside.e4.rcp.model.emf.service.ITodoEMFService;
 import com.amitinside.e4.rcp.todo.events.MyEventConstants;
-import com.amitinside.e4.rcp.todo.model.ITodoService;
-import com.amitinside.e4.rcp.todo.model.Todo;
 
 import de.ralfebert.rcputils.random.RandomData;
 import de.ralfebert.rcputils.tables.TableViewerBuilder;
 
 public final class SampleUIAdapt {
 
-	private final ITodoService service;
+	private final ITodoEMFService service;
 	private final ESelectionService selectionService;
 	private TableViewerBuilder t;
 	private final IObservableList list;
 	private final IEclipseContext context;
+	private final IWorkbench workbench;
+
+	@Inject
+	String name;
+
 	private final IListChangeListener listener = new IListChangeListener() {
 
 		@Override
@@ -45,19 +52,23 @@ public final class SampleUIAdapt {
 	};
 
 	@Inject
-	public SampleUIAdapt(ITodoService service,
-			ESelectionService selectionService, IEclipseContext context) {
+	public SampleUIAdapt(ESelectionService selectionService,
+			IEclipseContext context, IWorkbench workbench,
+			ITodoEMFService service) {
 		this.service = service;
 		this.selectionService = selectionService;
 		this.context = context;
+		this.workbench = workbench;
 		list = new WritableList();
 	}
 
 	@PostConstruct
 	public void createControl(Composite parent) {
 
-		final FormToolkit toolkit = new FormToolkit(parent.getDisplay());
+		System.out.println("NAME=====>" + name);
 		System.out.println(context.get("test"));
+
+		final FormToolkit toolkit = new FormToolkit(parent.getDisplay());
 
 		// Creating the Screen
 		final Section section = toolkit.createSection(parent,
@@ -70,12 +81,17 @@ public final class SampleUIAdapt {
 
 		t = new TableViewerBuilder(client);
 
-		t.createColumn("Summary").bindToProperty(Todo.FIELD_SUMMARY)
+		t.createColumn("Summary")
+				.bindToProperty(TodoPackage.Literals.TODO__SUMMARY.getName())
 				.makeEditable().build();
 
-		t.createColumn("Description").makeEditable().setPixelWidth(300)
+		t.createColumn("Description")
+				.makeEditable()
+				.setPixelWidth(300)
 				.useAsDefaultSortColumn()
-				.bindToProperty(Todo.FIELD_DESCRIPTION).build();
+				.bindToProperty(
+						TodoPackage.Literals.TODO__DESCRIPTION.getName())
+				.build();
 
 		t.getTableViewer().addSelectionChangedListener(
 				new ISelectionChangedListener() {
@@ -95,7 +111,8 @@ public final class SampleUIAdapt {
 		cityComboEditor.setInput(RandomData.CITIES);
 
 		t.createColumn("Notes").makeEditable(cityComboEditor)
-				.bindToProperty(Todo.FIELD_NOTE).build();
+				.bindToProperty(TodoPackage.Literals.TODO__NOTE.getName())
+				.build();
 
 		toolkit.adapt(t.getTable(), true, true);
 

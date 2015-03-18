@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.amitinside.e4.rcp.todo.emf.service">
+   <implementation class="com.amitinside.e4.rcp.todo.emf.service.EMFTodoServiceImpl"/>
+   <service>
+      <provide interface="com.amitinside.e4.rcp.model.emf.service.ITodoEMFService"/>
+   </service>
+</scr:component>

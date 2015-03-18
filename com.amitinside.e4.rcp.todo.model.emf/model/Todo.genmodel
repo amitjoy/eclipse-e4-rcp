@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.amitinside.e4.rcp.todo.model.emf/src" modelPluginID="com.amitinside.e4.rcp.todo.model.emf"
+    modelName="Todo" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    language="" operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>Todo.ecore</foreignModel>
+  <genPackages prefix="Todo" basePackage="com.amitinside.e4.rcp.model.emf" disposableProviderFactory="true"
+      ecorePackage="Todo.ecore#/">
+    <genDataTypes ecoreDataType="Todo.ecore#//Date"/>
+    <genClasses ecoreClass="Todo.ecore#//Todo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Todo.ecore#//Todo/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Todo.ecore#//Todo/summary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Todo.ecore#//Todo/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Todo.ecore#//Todo/done"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Todo.ecore#//Todo/dueDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Todo.ecore#//Todo/note"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

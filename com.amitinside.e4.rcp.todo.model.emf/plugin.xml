@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Todo -->
+      <package
+            uri="http://www.amitinside.com/Todo"
+            class="com.amitinside.e4.rcp.model.emf.Todo.TodoPackage"
+            genModel="model/Todo.genmodel"/>
+   </extension>
+
+</plugin>

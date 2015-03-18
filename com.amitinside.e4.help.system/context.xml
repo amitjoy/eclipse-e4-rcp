@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="message">
+      <description>This is the sample context-sensitive help. There is a link to the help content below.</description>
+      <topic href="html/subtopic.html" label="Subtopic" />
+   </context>
+</contexts> 

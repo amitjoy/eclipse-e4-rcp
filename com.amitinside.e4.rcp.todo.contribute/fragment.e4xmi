@@ -11,4 +11,9 @@
       <children xsi:type="menu:HandledMenuItem" xmi:id="_prtBwOhvEeK0EbZ5oaTAKA" elementId="com.amitinside.e4.rcp.todo.contribute.handledmenuitem.open" label="Open Map" command="_9uXkcOfjEeK4QayJPUymxA"/>
     </elements>
   </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_4yxMkM1LEeS4X6segi3gBw" featurename="children" parentElementId="org.eclipse.ui.main.menu" positionInList="before:com.amitinside.e4.rcp.todo.menu.styling">
+    <elements xsi:type="menu:Menu" xmi:id="_LavF4M1PEeS4X6segi3gBw" elementId="com.amitinside.e4.rcp.todo.contribute.menu.custom" label="Dummy">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_WnJ7AM1PEeS4X6segi3gBw" elementId="com.amitinside.e4.rcp.todo.contribute.handledmenuitem.dummy" label="Dummy" command="_9uXkcOfjEeK4QayJPUymxA"/>
+    </elements>
+  </fragments>
 </fragment:ModelFragments>
