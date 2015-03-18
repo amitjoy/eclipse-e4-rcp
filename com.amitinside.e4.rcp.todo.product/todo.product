@@ -3,6 +3,7 @@
 
 <product name="to-do" uid="com.amitinside.e4.rcp.todo.product" id="com.amitinside.e4.rcp.todo.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" useFeatures="true" includeLaunchers="false">
 
+
    <configIni use="default">
    </configIni>
 
@@ -24,9 +25,11 @@
       </win>
    </launcher>
 
+
    <vm>
       <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</macos>
    </vm>
+
 
    <plugins>
       <plugin id="com.ibm.icu"/>

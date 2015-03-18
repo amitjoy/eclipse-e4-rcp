@@ -17,7 +17,8 @@ public class UniqueTodoObjectSupplier extends ExtendedObjectSupplier {
 		// return a hard-coded Todo
 		// You could add checks which makes this Todo unique, e.g.
 		// be access the TodoService and reading all existing ID's
-		Todo todo = new Todo(15, "Checked", "Checked", false, new Date(), "AMIT");
+		final Todo todo = new Todo(15, "Checked", "Checked", false, new Date(),
+				"AMIT");
 		return todo;
 	}
 }

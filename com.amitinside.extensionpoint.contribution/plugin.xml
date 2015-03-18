@@ -6,5 +6,11 @@
       <client
             class="com.amitinside.extensionpoint.contribution.GreeterGerman"></client>
    </extension>
+   <extension
+         point="com.amitinside.extensionpoint.custom.factory">
+      <data
+            developer="Amit Kumar Mondal">
+      </data>
+   </extension>
 
 </plugin>

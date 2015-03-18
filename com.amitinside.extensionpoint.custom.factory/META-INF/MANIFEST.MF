@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Custom Factory
+Bundle-SymbolicName: com.amitinside.extensionpoint.custom.factory;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: AMITINSIDE
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.eclipse.core.runtime
+Export-Package: com.amitinside.extensionpoint.custom.factory
+Require-Bundle: org.eclipse.e4.core.di;bundle-version="1.4.0"

@@ -5,4 +5,5 @@ Bundle-SymbolicName: com.amitinside.extensionpoint.contribution;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: AMIT KUMAR MONDAL
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.9.0",
- com.amitinside.extensionpoint.definition;bundle-version="1.0.0"
+ com.amitinside.extensionpoint.definition;bundle-version="1.0.0",
+ com.amitinside.extensionpoint.custom.factory;bundle-version="1.0.0"
