@@ -1,5 +1,8 @@
 package com.amitinside.e4.rcp.todo.parts;
 
+import static com.amitinside.swt.layout.grid.GridDataUtil.applyGridData;
+import static com.amitinside.swt.layout.grid.GridLayoutUtil.applyGridLayout;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,12 +28,13 @@ import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import com.amitinside.e4.rcp.model.emf.Todo.Todo;
@@ -38,13 +42,13 @@ import com.amitinside.e4.rcp.model.emf.Todo.TodoPackage;
 import com.amitinside.e4.rcp.model.emf.service.ITodoEMFService;
 import com.amitinside.e4.rcp.todo.i18n.LocalizationHelper;
 import com.amitinside.e4.rcp.todo.i18n.Messages;
-import com.amitinside.swt.layout.grid.GridLayoutUtil;
 
 public class EMFTodoDetailsPart {
 
 	private final MDirtyable dirty;
 	private final Logger logger;
 	private final Messages messages;
+	private final ITodoEMFService service;
 
 	private Text txtSummary;
 	private Text txtDescription;
@@ -63,12 +67,15 @@ public class EMFTodoDetailsPart {
 
 	private Label lblNewLabel;
 
+	private boolean flagBeforeSave;
+
 	@Inject
 	public EMFTodoDetailsPart(@Translation Messages messages, Logger logger,
-			MDirtyable dirty) {
+			MDirtyable dirty, ITodoEMFService service) {
 		this.messages = messages;
 		this.logger = logger;
 		this.dirty = dirty;
+		this.service = service;
 
 		this.listener = new IChangeListener() {
 			@Override
@@ -87,36 +94,35 @@ public class EMFTodoDetailsPart {
 	@PostConstruct
 	public void createControls(Composite parent) {
 
-		GridLayoutUtil.applyGridLayout(parent).numColumns(2).marginRight(10)
-				.marginLeft(10).horizontalSpacing(10).marginWidth(0);
+		applyGridLayout(parent).numColumns(2).marginRight(10).marginLeft(10)
+				.horizontalSpacing(10).marginWidth(0).marginTop(15);
 
 		lblSummary = new Label(parent, SWT.NONE);
 		lblSummary.setText(messages.TodoDetailsPart_0);
 
 		txtSummary = new Text(parent, SWT.BORDER);
-		txtSummary
-				.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		applyGridData(txtSummary).withHorizontalFill();
 
 		lblDescription = new Label(parent, SWT.NONE);
 		lblDescription.setText(messages.TodoDetailsPart_1);
 
 		txtDescription = new Text(parent, SWT.BORDER | SWT.MULTI);
-		final GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
-		gd.heightHint = 122;
-		txtDescription.setLayoutData(gd);
+		applyGridData(txtDescription).withHorizontalFill().heightHint(122);
 
 		lblNote = new Label(parent, SWT.NONE);
 		lblNote.setText(messages.TodoDetailsPart_2);
 
 		txtNote = new Text(parent, SWT.BORDER);
-		txtNote.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		applyGridData(txtNote).withHorizontalFill();
 
 		lblNewLabel = new Label(parent, SWT.NONE);
 		lblNewLabel.setText(messages.TodoDetailsPart_3);
 
 		dateTime = new DateTime(parent, SWT.BORDER);
-		dateTime.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false,
-				1, 1));
+		applyGridData(dateTime).horizontalAlignment(SWT.FILL)
+				.verticalAlignment(SWT.CENTER).horizontalSpan(1)
+				.verticalSpan(1);
+
 		new Label(parent, SWT.NONE);
 
 		btnDone = new Button(parent, SWT.CHECK);
@@ -126,9 +132,15 @@ public class EMFTodoDetailsPart {
 	}
 
 	@Persist
-	public void save(MDirtyable dirty, ITodoEMFService model) {
-		model.saveTodo(todo);
-		dirty.setDirty(false);
+	public void save(Shell shell) {
+		if (flagBeforeSave) {
+			service.saveTodo(todo);
+			dirty.setDirty(false);
+			return;
+		}
+		MessageDialog.openError(shell, "Error while saving changes",
+				"Please check all inputs");
+
 	}
 
 	@Inject
@@ -191,8 +203,10 @@ public class EMFTodoDetailsPart {
 					if (value instanceof String) {
 						if (((String) value)
 								.matches(messages.TodoDetailsPart_5)) {
+							flagBeforeSave = true;
 							return ValidationStatus.OK_STATUS;
-						}
+						} else
+							flagBeforeSave = false;
 					}
 					return ValidationStatus.error(messages.TodoDetailsPart_6);
 				}
@@ -212,14 +226,6 @@ public class EMFTodoDetailsPart {
 			ctx.bindValue(observeSelectionDateTimeObserveWidget,
 					dueDateTodoObserveValue);
 
-			// register listener for any changes
-			providers = ctx.getValidationStatusProviders();
-			for (final Object o : providers) {
-				final Binding b = (Binding) o;
-				b.getTarget().addChangeListener(listener);
-			}
-
-			// Register for the changes
 			providers = ctx.getValidationStatusProviders();
 			for (final Object o : providers) {
 				final Binding b = (Binding) o;

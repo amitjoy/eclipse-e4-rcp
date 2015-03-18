@@ -11,6 +11,7 @@ import org.eclipse.core.databinding.observable.ChangeEvent;
 import org.eclipse.core.databinding.observable.IChangeListener;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.Persist;
 import org.eclipse.e4.ui.model.application.ui.MDirtyable;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -172,7 +173,8 @@ public class SampleFormUsingFormsAPI {
 	}
 
 	@Inject
-	public void setToDo(@Named(IServiceConstants.ACTIVE_SELECTION) Todo todo) {
+	public void setToDo(
+			@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Todo todo) {
 		this.todo = todo;
 		updateTheUI(todo);
 	}

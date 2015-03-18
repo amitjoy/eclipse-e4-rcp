@@ -14,6 +14,8 @@ import com.amitinside.e4.rcp.model.emf.Todo.TodoFactory;
 import com.amitinside.e4.rcp.model.emf.service.ITodoEMFService;
 import com.amitinside.e4.rcp.todo.events.MyEventConstants;
 
+import de.ralfebert.rcputils.random.RandomData;
+
 public class EMFTodoServiceImpl implements ITodoEMFService {
 
 	private static int current = 1;
@@ -85,16 +87,10 @@ public class EMFTodoServiceImpl implements ITodoEMFService {
 
 	private List<Todo> createInitialModel() {
 		final List<Todo> list = new ArrayList<Todo>();
-		list.add(createTodo("Application model", "Flexible and extensible",
-				"A1"));
-		list.add(createTodo("DI", "@Inject as programming mode", "B1"));
-		list.add(createTodo("OSGi", "Services", "C1"));
-		list.add(createTodo("SWT", "Widgets", "D1"));
-		list.add(createTodo("JFace", "Especially Viewers!", "E1"));
-		list.add(createTodo("CSS Styling", "Style your application", "F1"));
-		list.add(createTodo("Eclipse services", "Selection, model, Part", "G1"));
-		list.add(createTodo("Renderer", "Different UI toolkit", "H1"));
-		list.add(createTodo("Compatibility Layer", "Run Eclipse 3.x", "I1"));
+		for (int i = 0; i < 10; i++) {
+			list.add(createTodo(RandomData.CITIES[i],
+					RandomData.GIVEN_NAMES[i], RandomData.LAST_NAMES[i]));
+		}
 		return list;
 	}
 

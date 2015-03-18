@@ -2,7 +2,7 @@ package com.amitinside.e4.rcp.todo.i18n;
 
 import org.eclipse.e4.core.services.nls.Message;
 
-@Message(contributorURI = "platform:/fragment/com.amitinside.e4.rcp.todo.i18n")
+@Message(contributionURI = "platform:/fragment/com.amitinside.e4.rcp.todo.i18n")
 public class Messages {
 	public static String TodoOverviewPart_0;
 	public static String TodoDeletionPart_0;

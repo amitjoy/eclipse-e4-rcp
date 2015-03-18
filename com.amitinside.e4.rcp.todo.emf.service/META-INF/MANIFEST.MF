@@ -12,6 +12,7 @@ Require-Bundle: com.amitinside.e4.rcp.todo.model.emf;bundle-version="0.1.0",
  org.eclipse.e4.core.di;bundle-version="1.4.0",
  org.eclipse.e4.ui.model.workbench;bundle-version="1.1.0"
 Import-Package: com.amitinside.e4.rcp.todo.events,
+ de.ralfebert.rcputils.random,
  javax.inject,
  org.eclipse.e4.core.services.events
 Service-Component: OSGI-INF/context.xml
