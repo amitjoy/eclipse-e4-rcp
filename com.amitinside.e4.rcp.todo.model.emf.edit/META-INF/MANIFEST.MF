@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.amitinside.e4.rcp.todo.model.emf.edit;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: com.amitinside.e4.rcp.model.emf.Todo.provider.TodoEditPlugin$Implementation$Activator
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: com.amitinside.e4.rcp.model.emf.Todo.provider
+Require-Bundle: org.eclipse.core.runtime;resolution:=optional;x-installation:=greedy,
+ com.amitinside.e4.rcp.todo.model.emf;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Import-Package: org.osgi.framework
+Bundle-ActivationPolicy: lazy

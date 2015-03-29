@@ -10,6 +10,7 @@ import javax.inject.Named;
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
+import org.eclipse.core.databinding.conversion.IConverter;
 import org.eclipse.core.databinding.observable.ChangeEvent;
 import org.eclipse.core.databinding.observable.IChangeListener;
 import org.eclipse.core.databinding.observable.list.IObservableList;
@@ -196,6 +197,25 @@ public class EMFTodoDetailsPart {
 			model = EMFProperties.value(TodoPackage.Literals.TODO__NOTE)
 					.observe(todo);
 
+			final IConverter converter = new IConverter() {
+
+				@Override
+				public Object getToType() {
+					return null;
+				}
+
+				@Override
+				public Object getFromType() {
+					return null;
+				}
+
+				@Override
+				public Object convert(Object elem) {
+					System.out.println(">>>>>" + elem);
+					return elem.toString().charAt(0);
+				}
+			};
+
 			final IValidator validator = new IValidator() {
 
 				@Override
@@ -214,6 +234,7 @@ public class EMFTodoDetailsPart {
 
 			final UpdateValueStrategy strategy = new UpdateValueStrategy();
 			strategy.setBeforeSetValidator(validator);
+			strategy.setConverter(converter);
 
 			final Binding bindvalue = ctx.bindValue(target, model, strategy,
 					null);

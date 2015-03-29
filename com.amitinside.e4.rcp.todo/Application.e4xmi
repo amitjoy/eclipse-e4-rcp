@@ -16,6 +16,7 @@
                   <children xsi:type="menu:HandledMenuItem" xmi:id="_dxcH8BBrEeOc8MniUgVQ2w" elementId="com.amitinside.e4.rcp.todo.handledmenuitem.openeditor" label="Open in editor" command="_vGK5kA1pEeKkaoNsQKzVcw"/>
                 </menus>
               </children>
+              <children xsi:type="basic:Part" xmi:id="_WLkdQM42EeS4X6segi3gBw" elementId="com.amitinside.e4.rcp.todo.part.emf.without.databinding" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.EMFTableViewerBindingPart" label="EMF To-dos without dbc"/>
               <children xsi:type="basic:Part" xmi:id="_J6Y-MMrCEeS5rfSTsyxuOQ" elementId="com.amitinside.e4.rcp.todo.part.anotherFormAPI" contributionURI="bundleclass://com.amitinside.e4.rcp.todo/com.amitinside.e4.rcp.todo.parts.SampleUIAdapt" label="EMF To-Dos" tooltip="Another Example of Form API"/>
             </children>
             <children xsi:type="basic:PartStack" xmi:id="_9SkyUAzDEeKhVv5pZDR7bA" elementId="com.amitinside.e4.rcp.todo.partstack.1" containerData="40">

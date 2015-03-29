@@ -33,7 +33,6 @@ Require-Bundle: org.eclipse.swt;bundle-version="3.100.0",
  com.amitinside.e4.rcp.todo.addons;bundle-version="1.0.0",
  org.eclipse.e4.ui.model.workbench,
  org.eclipse.emf.common;bundle-version="2.9.0",
- org.eclipse.emf.ecore;bundle-version="2.9.0",
  org.eclipse.e4.core.commands;bundle-version="0.10.2",
  org.mihalis.opal;bundle-version="1.0.0",
  com.google.guava,
@@ -49,11 +48,15 @@ Require-Bundle: org.eclipse.swt;bundle-version="3.100.0",
  net.jeeeyul.swtend;bundle-version="2.2.5",
  org.eclipse.jface.text;bundle-version="3.9.2",
  org.eclipse.help;bundle-version="3.6.0",
- org.eclipse.emf.databinding;bundle-version="1.3.0"
+ org.eclipse.emf.databinding;bundle-version="1.3.0",
+ com.amitinside.e4.rcp.todo.model.emf.edit;bundle-version="1.0.0",
+ org.eclipse.emf.edit.ui;bundle-version="2.10.2",
+ org.eclipse.emf.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: com.amitinside.e4.bundleresourceloader,
  com.amitinside.e4.rcp.model.emf.Todo,
  com.amitinside.e4.rcp.model.emf.service,
  com.amitinside.swt.layout.form,
  com.amitinside.swt.layout.grid,
- org.apache.commons.io
+ org.apache.commons.io,
+ org.eclipse.emf.ecore.provider
